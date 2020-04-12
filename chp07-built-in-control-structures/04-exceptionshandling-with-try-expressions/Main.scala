@@ -7,3 +7,11 @@ def urlFor(path: String) =
     case e: MalformedURLException =>
       new URL("http://www.scala-lang.org")
   }
+
+//here f() returns 2
+def f(): Int = try return 1 finally return 2
+
+//here g() returns 1
+def g(): Int = try 1 finally 2
+
+//you should avoid returning anything from finally blocks
