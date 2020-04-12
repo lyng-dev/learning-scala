@@ -14,10 +14,22 @@ class Rational(n: Int, d: Int) {
   def add(that: Rational): Rational =
     new Rational(this.numer * that.denom + that.numer * this.denom, denom * that.denom)
   def +(that: Rational): Rational = add(that)
+  def +(i: Int): Rational = add(new Rational(i,1))
 
   def subtract(that: Rational): Rational =
     new Rational(this.numer * that.denom - that.numer * this.denom, this.denom * that.denom)
   def - (that: Rational): Rational = subtract(that)
+  def - (i: Int): Rational = subtract(new Rational(i,1))
+
+  def multiply(that: Rational): Rational =
+    new Rational(this.numer * that.numer, this.denom * that.denom)
+  def * (that: Rational): Rational = multiply(that)
+  def * (i: Int): Rational = multiply(new Rational(i,1))
+
+  def divide(that: Rational): Rational =
+    new Rational(this.numer * that.denom, this.denom * that.numer)
+  def / (that: Rational): Rational = divide(that)
+  def / (i: Int): Rational = divide(new Rational(i,1))
 
   //added from self-reference section
   def lessThan(that: Rational):Boolean = {
