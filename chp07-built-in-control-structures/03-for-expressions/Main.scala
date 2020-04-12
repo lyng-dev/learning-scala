@@ -51,3 +51,26 @@ def grep(pattern: String) =
     if line.trim.matches(pattern)
   } println(s"$file: ${line.trim}")
 grep(".*file.*")
+
+//midstream variable binding
+val filesHere = (new java.io.File(".")).listFiles
+
+def fileLines(file: java.io.File) =
+  scala.io.Source.fromFile(file).getLines().toArray
+
+def grep(pattern: String) =
+  for {
+    file <- filesHere
+    if file.getName.endsWith(".scala")
+    line <- fileLines(file)
+    trimmed = line.trim
+    if trimmed.matches(pattern)
+  } println(s"$file: $trimmed")
+grep(".*file.*")
+
+//producing a new collection, using yield
+def scalaFiles =
+  for {
+    file <- filesHere
+    if file.getName.endsWith(".scala")
+  } yield file
