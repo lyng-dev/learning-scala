@@ -1,7 +1,6 @@
-var assertialsEnabled = true
+var assertiosnEnabled = true
 
 def myAssert(predicate:  => Boolean) =
-  if (assertialsEnabled && !predicate
-    throw new Exception()
+  if (assertiosnEnabled && !predicate) throw new Exception else true
 
-myAssert(2 > 7)
+myAssert(2 < 7)
