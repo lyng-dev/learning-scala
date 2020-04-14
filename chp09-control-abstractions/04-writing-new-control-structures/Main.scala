@@ -15,10 +15,14 @@ twice(input => input + 1, 5)
 //https://whileonefork.blogspot.com/2011/03/c-using-is-loan-pattern-in-scala.html
 
 //4. A very simply greeter control structure
-def greet(greeting: String)(func: String => Unit) {
-  func(greeting)
+def greet(greeting: String)(func: => Unit) {
+  println(greeting)
+  func
+  println(greeting)
 }
 
 greet("Hello") {
-  println(_)
+  println("Yes")
+  println("Nooo")
+  println("Maybe!!!")
 }
