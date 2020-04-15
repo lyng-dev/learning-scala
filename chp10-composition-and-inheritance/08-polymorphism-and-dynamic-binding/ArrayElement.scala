@@ -33,3 +33,32 @@ val e1: Element = new ArrayElement(Array("hello", "world"))
 val ae: ArrayElement = new LineElement("hello")
 val e2: Element = ae
 val e3: Element = new UniformElement('x', 2, 3)
+
+//DYNAMIC BINDING:
+abstract class Element {
+  def demo() = {
+    println("Element's implementation invoked")
+  }
+}
+class ArrayElement extends Element {
+  override def demo() = {
+    println("ArrayElement's implementation invoked")
+  }
+}
+class LineElement extends ArrayElement {
+  override def demo() = {
+    println("LineElement's implementation invoked")
+  }
+}
+// UniformElement inherits Element's demo
+class UniformElement extends Element
+def invokeDemo(e: Element) = {
+  e.demo()
+}
+invokeDemo(new ArrayElement)
+invokeDemo(new LineElement)
+invokeDemo(new UniformElement)
+
+//notice that, since UniformElement does not override,
+// then it uses the actual implementation from Element
+// unlike the two others
