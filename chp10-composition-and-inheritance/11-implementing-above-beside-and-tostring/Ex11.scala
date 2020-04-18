@@ -10,12 +10,12 @@ object Ex11  {
     def height: Int = contents.length
 
     def above(that: Element): Element =
-      new ArrayElement(this.contents ++ that.contents)
+      new ArrayElement(this.contents ++ that.contents) //concatenate to arrays by using '++'
 
     def beside(that: Element): Element =
       new ArrayElement(
         for (
-          (line1, line2) <- this.contents zip that.contents
+          (line1, line2) <- this.contents zip that.contents //merge two array [a,b] [c,d] => [(a,c),(b,d)] with zip
         ) yield line1 + line2
       )
 
