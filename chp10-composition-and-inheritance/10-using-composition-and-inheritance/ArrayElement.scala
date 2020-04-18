@@ -23,3 +23,5 @@ class UniformElement(
   private def line: String = ch.toString * width
   def contents = Array.fill(height)(line)
 }
+
+
