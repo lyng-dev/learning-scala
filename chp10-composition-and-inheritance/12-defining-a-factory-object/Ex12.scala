@@ -36,16 +36,16 @@ object Ex12  {
       new LineElement(line)
   }
 
-  class ArrayElement(conts: Array[String]) extends Element {
+  private class ArrayElement(conts: Array[String]) extends Element { //can not be private
     def contents: Array[String] = conts
   }
 
-  class LineElement(s: String) extends ArrayElement(Array(s)) {
+  private class LineElement(s: String) extends ArrayElement(Array(s)) { //can not be private
     override def width = s.length
     override def height = 1
   }
 
-  class UniformElement(
+  private class UniformElement( //can not be private
                         ch: Char,
                         override val width: Int,
                         override val height: Int
